@@ -32,8 +32,3 @@
   color: var(--white);
   margin: 0.5rem;
 }
-@media only screen and (max-width: 500px) {
-  .podcasts-cards {
-    width: 300px;
-  }
-}

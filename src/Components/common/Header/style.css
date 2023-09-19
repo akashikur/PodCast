@@ -31,8 +31,8 @@
 a.active {
   color: white !important;
 }
-@media only screen and (max-width: 500px) {
+/* @media only screen and (max-width: 500px) {
   .links a {
     font-size: 13px !important;
   }
-}
+} */

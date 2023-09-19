@@ -14,7 +14,7 @@
   color: var(--theme);
   transition: all 1s;
 }
-@media only screen and (max-width: 500px) {
+/* @media only screen and (max-width: 500px) {
   .custom-btn {
     font-size: 0.8rem;
     border: 2px solid var(--purple-grey);
@@ -23,4 +23,4 @@
     font-weight: 500;
     margin: 0.7rem;
   }
-}
+} */

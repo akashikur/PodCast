@@ -41,7 +41,7 @@
   align-items: center;
   font-size: 190px;
 }
-@media only screen and (max-width: 500px) {
+/* @media only screen and (max-width: 500px) {
   .profile-input {
     width: 150px;
     height: 150px;
@@ -55,4 +55,4 @@
 
     object-fit: cover;
   }
-}
+} */
