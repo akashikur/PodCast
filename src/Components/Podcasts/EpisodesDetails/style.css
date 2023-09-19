@@ -1,0 +1,10 @@
+@media only screen and (max-width: 700px) {
+  title {
+    font-size: 25px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .ep-title {
+    font-size: 20px;
+  }
+}
