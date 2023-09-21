@@ -17,7 +17,10 @@ const PodcastCard = ({ id, title, displayImage, delay }) => {
           src={displayImage}
           alt="disImage"
         />
-        <p className="title-podcasts">{title}</p>
+        <div className="title-podcasts">
+          <p>{title}</p>
+          <span class="material-symbols-outlined">play_arrow</span>
+        </div>
       </motion.div>
     </Link>
   );

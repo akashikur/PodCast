@@ -89,9 +89,9 @@ const AudioPlay = ({ audioSrc, image }) => {
     <div className="custom-audio-player">
       <img src={image} alt="imag" className="display-image-player" />
       <audio ref={audioRef} src={audioSrc} />
-      <p className="audio-btn" onClick={togglePlay}>
+      <div className="audio-btn" onClick={togglePlay}>
         {isPlaying ? <FaPause /> : <FaPlay />}
-      </p>
+      </div>
       <div className="duaration-flex">
         <p>{formatTime(currentTime)}</p>
         <input

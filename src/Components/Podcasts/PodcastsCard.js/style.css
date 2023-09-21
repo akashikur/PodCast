@@ -21,16 +21,20 @@
 .title-podcasts {
   width: 100%;
   border: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--white);
+}
+.title-podcasts span {
+  margin-right: 10px;
+  font-size: 27px;
 }
 .podcasts-cards:hover {
   opacity: 1 !important;
   transition: all 0.3s;
 }
-.title-podcasts {
-  text-decoration: none;
-  color: var(--white);
-  margin: 0.5rem;
-}
+
 @media only screen and (max-width: 500px) {
   .podcasts-cards {
     width: 300px;

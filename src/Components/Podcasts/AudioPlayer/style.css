@@ -3,7 +3,7 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  padding: 0.6rem 0rem;
+  /* padding: 0rem; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,8 +11,8 @@
   background-color: rgb(14, 2, 21, 0.5);
 }
 .display-image-player {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -34,6 +34,17 @@
 .audio-btn {
   cursor: pointer;
   align-items: center;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.audio-btn:hover {
+  background-color: var(--white);
+  color: var(--theme);
+  transition: all 0.4s;
 }
 .episodes {
   width: 100%;
@@ -52,6 +63,6 @@
 }
 @media only screen and (max-width: 440px) {
   .custom-audio-player {
-    gap: 0.8rem;
+    gap: 0.3rem;
   }
 }
