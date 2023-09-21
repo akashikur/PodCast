@@ -8,13 +8,13 @@ import Header from "../Components/common/Header";
 import PodcastCard from "../Components/Podcasts/PodcastsCard.js";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { setPodcasts } from "../Slices/podcastSlice";
-import { setUser } from "../Slices/userSlice";
 
 const Profile = () => {
   const dispatch = useDispatch();
 
   const [myPodcasts, setMyPodcasts] = useState([]);
   const user = useSelector((state) => state.user.user);
+
   const podcasts = useSelector((state) => state.podcast.podcasts);
 
   useEffect(() => {
@@ -26,28 +26,8 @@ const Profile = () => {
           podcastsData.push({ id: doc.id, ...doc.data() });
         });
         console.log(podcastsData);
-        dispatch(setPodcasts(podcastsData));
-      },
-      (error) => {
-        console.error("Error fetching podcasts:", error);
-      }
-    );
-    return () => {
-      unsubscribe();
-    };
-  }, [dispatch]);
 
-  useEffect(() => {
-    // fetching a data
-    const unsubscribe = onSnapshot(
-      query(collection(db, "users")),
-      (querySnapshot) => {
-        const podcastsData = [];
-        querySnapshot.forEach((doc) => {
-          podcastsData.push({ id: doc.id, ...doc.data() });
-        });
-        // console.log("user", podcastsData[0]);
-        dispatch(setUser(podcastsData[0]));
+        dispatch(setPodcasts(podcastsData));
       },
       (error) => {
         console.error("Error fetching podcasts:", error);

@@ -17,7 +17,7 @@ function SignUpForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [profileImage, setProfileImage] = useState();
+  const [profileImage, setProfileImage] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -36,7 +36,6 @@ function SignUpForm() {
   };
 
   const handleSignup = async () => {
-    // console.log("Handling Signup...");
     setLoading(true);
     if (
       password === confirmPassword &&
@@ -46,7 +45,6 @@ function SignUpForm() {
       profileImage
     ) {
       try {
-        // Creating user's account.
         const userCredential = await createUserWithEmailAndPassword(
           auth,
           email,
@@ -55,7 +53,6 @@ function SignUpForm() {
 
         const user = userCredential.user;
         console.log("user", user);
-        // Saving user's details.
         await setDoc(doc(db, "users", user.uid), {
           name: fullName,
           email: user.email,
