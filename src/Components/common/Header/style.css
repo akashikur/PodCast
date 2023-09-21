@@ -20,7 +20,7 @@
 }
 .gradient {
   position: absolute;
-  width: 800px;
+  width: 40%;
   height: 150px;
   margin: auto;
   background: var(--blue);
@@ -31,8 +31,11 @@
 a.active {
   color: white !important;
 }
-/* @media only screen and (max-width: 500px) {
+@media only screen and (max-width: 500px) {
   .links a {
     font-size: 13px !important;
   }
-} */
+  .gradient {
+    width: 90%;
+  }
+}

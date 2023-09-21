@@ -7,13 +7,14 @@ const Episodes = ({ index, title, description, audioFile, onClick }) => {
       <h2 style={{ textAlign: "left", marginBottom: 0 }} className="ep-title">
         {index}.{title}
       </h2>
-      <p style={{ marginLeft: "1.5rem" }} className="podcast-description ">
+      <p style={{ marginLeft: "1rem" }} className="podcast-description ">
         {description}
       </p>
       <Button
         text={"play"}
         onClick={() => onClick(audioFile)}
         style={{ width: "100px" }}
+        podcast_class={true}
       />
     </div>
   );

@@ -21,7 +21,7 @@ input {
   font-family: "Inter", sans-serif;
 }
 .input-wrapper {
-  width: 85%;
+  width: 85vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,13 +59,6 @@ a {
   object-fit: cover;
   border-radius: 2rem;
 }
-.prodcast-flex {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
 
 .cursor-pointer {
   display: none;
@@ -83,13 +76,13 @@ a {
 
 /* /podcast  */
 .prodcast-wrapper {
-  width: 85%;
+  width: 85vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  overflow-x: hidden;
+  margin-bottom: 2rem;
 }
 .podcast-episode-heading {
   text-align: left !important;
@@ -106,7 +99,6 @@ a {
   width: 100%;
 }
 .inside-bg {
-  bottom: 0;
   left: 15px;
 }
 .banner-wrapper {
@@ -123,6 +115,13 @@ a {
   opacity: 0.6;
   transition: all 0.3s;
 }
+.prodcast-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
 
 @keyframes cursomArrow {
   from {
@@ -130,5 +129,51 @@ a {
   }
   to {
     transform: scale(1) translateX(-50%) translateY(-50%);
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .prodcast-wrapper {
+    width: 90vw;
+  }
+  .banner-wrapper {
+    height: 300px;
+    width: 100% !important;
+  }
+  .podcast-episode-heading {
+    font-size: 20px;
+  }
+
+  .podcast-title-heading {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    /* padding: 10px; */
+  }
+  .toggleSign {
+    font-size: 14px;
+  }
+  .banner-wrapper {
+    height: 200px;
+    width: 100% !important;
+  }
+  .podcast-episode-heading {
+    font-size: 16px;
+  }
+
+  .podcast-title-heading {
+    font-size: 14px;
+    margin-left: 7px;
+    width: 100%;
+  }
+  .input-wrapper h1 {
+    font-size: 1rem;
+  }
+  .input-wrapper p {
+    margin-top: 5px;
   }
 }

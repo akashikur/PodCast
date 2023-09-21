@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 import Button from "../Components/common/Button";
 import Episodes from "../Components/Podcasts/EpisodesDetails";
 import AudioPlay from "../Components/Podcasts/AudioPlayer";
-import { hover } from "@testing-library/user-event/dist/hover";
 
 const PodcastDetails = () => {
   const { id } = useParams();
@@ -82,8 +81,8 @@ const PodcastDetails = () => {
                   <h1 className="podcast-title-heading">{podcast.title}</h1>
                   {podcast.createdBy === auth.currentUser.uid && (
                     <Button
-                      style={{ width: "200px" }}
                       text="create episodes"
+                      podcast_class={true}
                       onClick={() => {
                         navigate(`/podcast/${id}/create-episode`);
                       }}
