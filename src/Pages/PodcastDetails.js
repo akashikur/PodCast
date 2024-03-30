@@ -21,7 +21,7 @@ const PodcastDetails = () => {
   const [podcast, setPodcasts] = useState({});
   const [episodes, setEpisodes] = useState([]);
   const [playingFile, setPlayingFile] = useState("");
-
+  const [isPlay, setIsPlay] = useState(false);
   useEffect(() => {
     if (id) {
       getData();
@@ -140,6 +140,7 @@ const PodcastDetails = () => {
                     epId={episode.id}
                     createdBy={podcast.createdBy}
                     deleteEpisode={deleteEpisode}
+                    setIsPlay={setIsPlay}
                   />
                 ))}
               </div>
@@ -150,8 +151,12 @@ const PodcastDetails = () => {
         )}
       </div>
 
-      {playingFile && (
-        <AudioPlay audioSrc={playingFile} image={podcast.displayImage} />
+      {playingFile && isPlay && (
+        <AudioPlay
+          audioSrc={playingFile}
+          image={podcast.displayImage}
+          setIsPlay={setIsPlay}
+        />
       )}
     </div>
   );

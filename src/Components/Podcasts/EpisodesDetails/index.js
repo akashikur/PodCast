@@ -12,6 +12,7 @@ const Episodes = ({
   epId,
   createdBy,
   deleteEpisode,
+  setIsPlay,
 }) => {
   return (
     <div style={{ width: "100%" }}>
@@ -24,7 +25,10 @@ const Episodes = ({
       <div className="btn-flx">
         <Button
           text={"play"}
-          onClick={() => onClick(audioFile)}
+          onClick={() => {
+            onClick(audioFile);
+            setIsPlay(true);
+          }}
           style={{ width: "100px" }}
           podcast_class={true}
         />

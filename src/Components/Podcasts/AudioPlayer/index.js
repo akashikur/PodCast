@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./style.css";
 import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
-const AudioPlay = ({ audioSrc, image }) => {
+const AudioPlay = ({ audioSrc, image, setIsPlay }) => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMute, setIsMute] = useState(false);
   const [duration, setDuration] = useState(0);
@@ -116,6 +116,9 @@ const AudioPlay = ({ audioSrc, image }) => {
         onChange={handleVolume}
         className="volume-range"
       />
+      <div onClick={() => setIsPlay(false)} className="audio-btn">
+        <span class="material-symbols-outlined">close</span>
+      </div>
     </div>
   );
 };
