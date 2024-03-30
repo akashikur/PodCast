@@ -1,7 +1,18 @@
 import React from "react";
 import Button from "../../common/Button";
 import "./style.css";
-const Episodes = ({ index, title, description, audioFile, onClick }) => {
+import { auth } from "../../../firebase";
+
+const Episodes = ({
+  index,
+  title,
+  description,
+  audioFile,
+  onClick,
+  epId,
+  createdBy,
+  deleteEpisode,
+}) => {
   return (
     <div style={{ width: "100%" }}>
       <h2 style={{ textAlign: "left", marginBottom: 0 }} className="ep-title">
@@ -10,12 +21,25 @@ const Episodes = ({ index, title, description, audioFile, onClick }) => {
       <p style={{ marginLeft: "1rem" }} className="podcast-description ">
         {description}
       </p>
-      <Button
-        text={"play"}
-        onClick={() => onClick(audioFile)}
-        style={{ width: "100px" }}
-        podcast_class={true}
-      />
+      <div className="btn-flx">
+        <Button
+          text={"play"}
+          onClick={() => onClick(audioFile)}
+          style={{ width: "100px" }}
+          podcast_class={true}
+        />
+
+        {auth.currentUser.uid === createdBy && (
+          <div className="delete-Icon">
+            <span
+              class="material-symbols-outlined"
+              onClick={() => deleteEpisode(epId)}
+            >
+              delete
+            </span>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

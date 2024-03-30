@@ -21,7 +21,6 @@ const PodcastsPage = () => {
         querySnapshot.forEach((doc) => {
           podcastsData.push({ id: doc.id, ...doc.data() });
         });
-        console.log(podcastsData);
         dispatch(setPodcasts(podcastsData));
       },
       (error) => {

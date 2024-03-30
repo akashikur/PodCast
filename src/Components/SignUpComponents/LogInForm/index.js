@@ -17,7 +17,6 @@ function LogInForm() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    console.log("Handling Login");
     setLoading(true);
     if (email && password) {
       try {
@@ -30,7 +29,6 @@ function LogInForm() {
 
         const userDoc = await getDoc(doc(db, "users", user.uid));
         const userData = userDoc.data();
-        console.log("userData", userData);
 
         dispatch(
           setUser({

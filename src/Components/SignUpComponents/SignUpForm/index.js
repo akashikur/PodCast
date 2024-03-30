@@ -52,7 +52,6 @@ function SignUpForm() {
         );
 
         const user = userCredential.user;
-        console.log("user", user);
         await setDoc(doc(db, "users", user.uid), {
           name: fullName,
           email: user.email,
@@ -73,7 +72,6 @@ function SignUpForm() {
         setLoading(false);
         navigate("/profile");
       } catch (e) {
-        // console.log("error", e);
         toast.error("User not created Something is wrong....");
         setLoading(false);
       }

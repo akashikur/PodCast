@@ -122,6 +122,11 @@ a {
   align-items: center;
   gap: 20px;
 }
+.flex-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 
 @keyframes cursomArrow {
   from {

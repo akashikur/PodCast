@@ -3,7 +3,6 @@ import "./styler.css";
 const FileInput = ({ accept, id, fileHandleFnc, text }) => {
   const [fileSelected, setFileSelected] = useState();
   const onChange = (e) => {
-    console.log(e);
     setFileSelected(e.target.files[0].name);
     fileHandleFnc(e.target.files[0]);
   };

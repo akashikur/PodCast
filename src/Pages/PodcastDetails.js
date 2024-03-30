@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Components/common/Header";
 import { useNavigate, useParams } from "react-router-dom";
-import { collection, doc, getDoc, onSnapshot, query } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  onSnapshot,
+  query,
+} from "firebase/firestore";
 import { auth, db } from "../firebase";
 import { toast } from "react-toastify";
 import Button from "../Components/common/Button";
@@ -10,7 +17,6 @@ import AudioPlay from "../Components/Podcasts/AudioPlayer";
 
 const PodcastDetails = () => {
   const { id } = useParams();
-  console.log(id);
   const navigate = useNavigate();
   const [podcast, setPodcasts] = useState({});
   const [episodes, setEpisodes] = useState([]);
@@ -29,7 +35,6 @@ const PodcastDetails = () => {
       if (docSnap.exists()) {
         setPodcasts({ id: id, ...docSnap.data() });
       } else {
-        console.log("error");
         navigate("/podcasts");
       }
     } catch (e) {
@@ -57,6 +62,24 @@ const PodcastDetails = () => {
     };
   }, []);
 
+  const deleteEpisode = async (episodeId) => {
+    try {
+      await deleteDoc(doc(db, "podcasts", id, "episodes", episodeId)); // Delete the episode
+      toast.success("Episode deleted successfully");
+    } catch (error) {
+      toast.error("Error deleting episode:", error);
+    }
+  };
+  const deletePodcast = async () => {
+    try {
+      await deleteDoc(doc(db, "podcasts", id)); // Delete the podcast
+      toast.success("Podcast deleted successfully");
+      navigate("/podcasts");
+    } catch (error) {
+      toast.error("Error deleting podcast:", error);
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -80,13 +103,23 @@ const PodcastDetails = () => {
                 <div className="inside-bg">
                   <h1 className="podcast-title-heading">{podcast.title}</h1>
                   {podcast.createdBy === auth.currentUser.uid && (
-                    <Button
-                      text="create episodes"
-                      podcast_class={true}
-                      onClick={() => {
-                        navigate(`/podcast/${id}/create-episode`);
-                      }}
-                    />
+                    <div className="flex-button">
+                      <Button
+                        text="create episodes"
+                        podcast_class={true}
+                        onClick={() => {
+                          navigate(`/podcast/${id}/create-episode`);
+                        }}
+                      />
+                      <div className="delete-Icon">
+                        <span
+                          class="material-symbols-outlined"
+                          onClick={deletePodcast}
+                        >
+                          delete
+                        </span>
+                      </div>
+                    </div>
                   )}
                 </div>
               </div>
@@ -104,6 +137,9 @@ const PodcastDetails = () => {
                     description={episode.description}
                     audioFile={episode.audioFile}
                     onClick={(file) => setPlayingFile(file)}
+                    epId={episode.id}
+                    createdBy={podcast.createdBy}
+                    deleteEpisode={deleteEpisode}
                   />
                 ))}
               </div>
