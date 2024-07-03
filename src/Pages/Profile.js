@@ -9,9 +9,10 @@ import PodcastCard from "../Components/Podcasts/PodcastsCard.js";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { setPodcasts } from "../Slices/podcastSlice";
 import profile_avator from "../images/Page-1.png";
+import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const [myPodcasts, setMyPodcasts] = useState([]);
   const user = useSelector((state) => state.user.user);
 
@@ -48,6 +49,7 @@ const Profile = () => {
   const handleLogOut = () => {
     signOut(auth)
       .then(() => {
+        navigate("/");
         toast.success("User LogOut");
       })
       .catch((error) => {
